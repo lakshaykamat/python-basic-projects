@@ -1,10 +1,36 @@
-from QuizProgram.QuestionSet import QuestionSet,show_sets
+import csv
+
+from QuizProgram.QuestionSet import QuestionSet, show_sets
 from QuizProgram.User import User
 from QuizProgram.quiz_data import get_question_set
 
+
+def load_questions(file_name):
+    questions = []
+
+    with open(file_name, 'r') as file:
+        csv_reader = csv.reader(file)
+        header = next(csv_reader)  # Skip the header
+        for row in csv_reader:
+            question = {
+                'Question': row[0],
+                'Options': row[1:5],
+                'CorrectIndex': int(row[5])
+            }
+            questions.append(question)
+
+    print(questions)
+    return question
+
+
 if __name__ == '__main__':
+    load_questions('QuizProgram/questions/general.csv')
     # Get user's name
     user_name = input("Enter your name: ")
+    while len(user_name) <= 3:
+        print("Name length should be greater than 3")
+        user_name = input("Enter your name: ")
+
     user = User(user_name)
 
     show_sets()

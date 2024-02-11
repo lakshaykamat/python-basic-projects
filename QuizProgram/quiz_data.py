@@ -1,5 +1,6 @@
 from QuizProgram.QuestionSet import QuestionSet
 from QuizProgram.Quiz import Quiz
+
 # Define a dictionary containing questions for each QuestionSet
 questions_list = {
     QuestionSet.General: (
@@ -15,13 +16,14 @@ questions_list = {
 }
 
 
-def get_question_set(prompt):
+def get_question_set(prompt: QuestionSet):
     """
     Fetches questions list based on the given prompt (QuestionSet) and returns a Quizs instance.
 
     :param prompt: The QuestionSet for which questions are requested.
-    :return: Quizs instance with questions for the specified QuestionSet.
+    :return: Quiz instance with questions for the specified QuestionSet.
     """
-    # Create a Quizs instance with the questions for the specified QuestionSet
-    quiz_instance = Quiz(questions_list[prompt])
+
+    # Create a Quiz instance with the questions for the specified QuestionSet
+    quiz_instance = Quiz(questions=questions_list[prompt])
     return quiz_instance
