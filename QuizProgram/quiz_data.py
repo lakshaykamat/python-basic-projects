@@ -1,6 +1,5 @@
-from Quiz.QuestionSet import QuestionSet
-from Quiz import QuizClass
-
+from QuizProgram.QuestionSet import QuestionSet
+from QuizProgram.Quiz import Quiz
 # Define a dictionary containing questions for each QuestionSet
 questions_list = {
     QuestionSet.General: (

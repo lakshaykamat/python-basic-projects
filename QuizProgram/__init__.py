@@ -1,6 +1,6 @@
-from Quiz.QuestionSet import QuestionSet,show_sets
-from Quiz.User import User
-from Quiz.quiz_data import get_question_set
+from QuizProgram.QuestionSet import QuestionSet,show_sets
+from QuizProgram.User import User
+from QuizProgram.quiz_data import get_question_set
 
 if __name__ == '__main__':
     # Get user's name

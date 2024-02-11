@@ -1,4 +1,4 @@
-class QuizClass:
+class Quiz:
     # Class variable to define the points for a right answer
     right_answer_point = 5
 
