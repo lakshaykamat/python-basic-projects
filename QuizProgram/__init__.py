@@ -1,25 +1,6 @@
-import csv
-
 from QuizProgram.QuestionSet import QuestionSet
 from QuizProgram.User import User
 from QuizProgram.quiz_data import get_question_set
-
-
-def load_questions(file_name):
-    questions = []
-
-    with open(f"QuizProgram/questions/{file_name}", 'r') as file:
-        csv_reader = csv.reader(file)
-        header = next(csv_reader)  # Skip the header
-        for row in csv_reader:
-            question = {
-                'Question': row[0],
-                'Options': row[1:5],
-                'CorrectIndex': int(row[5])
-            }
-            questions.append(question)
-
-    return questions
 
 
 def read_user_name():
@@ -31,7 +12,6 @@ def read_user_name():
 
 
 if __name__ == '__main__':
-
     user_name = read_user_name()  # Get user's name
 
     user = User(user_name)
@@ -43,7 +23,6 @@ if __name__ == '__main__':
     try:
         # Get the chosen question set
         quiz = get_question_set(QuestionSet[chosen_question_set_name])
-        print(QuestionSet[chosen_question_set_name])
     except KeyError:
         print("Invalid question set name. Exiting.")
         exit()
