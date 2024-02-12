@@ -1,10 +1,14 @@
 class Quiz:
     # Class variable to define the points for a right answer
-    right_answer_point = 5
+    __right_answer_point = 5
 
-    def __init__(self, questions: tuple):
+    @classmethod
+    def get_answer_point(cls):
+        return cls.__right_answer_point
+
+    def __init__(self, questions):
         """
-        Initialize the Quizs with a list of questions.
+        Initialize the Quiz with a list of questions.
         Each question should be a tuple in the format:
         (question_text, options_list, correct_option_index)
         """
@@ -19,7 +23,7 @@ class Quiz:
         for i, option in enumerate(options, start=1):
             print(f"   {i}. {option}")
 
-    def submit_answer(self, question_number: int, user_answer: int):
+    def check_answer(self, question_number: int, user_answer: int):
         """
         Submit the user's answer for the given question number and
         update the score if the answer is correct.
@@ -50,7 +54,7 @@ class Quiz:
                     print("Enter a number.")
 
             # Submit the answer and store the result
-            answer = self.submit_answer(question, user_answer)
+            answer = self.check_answer(question, user_answer)
             result.append(answer)
 
         return result
